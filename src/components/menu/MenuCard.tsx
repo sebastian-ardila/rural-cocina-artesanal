@@ -93,15 +93,15 @@ export function MenuCard({
       {/* Content below image */}
       <div className="p-2.5 sm:p-3 flex flex-col flex-1 bg-rural-black">
         {/* Ingredients */}
-        <div className="flex flex-wrap gap-1 flex-1">
-          {ingredients.map((ing, i) => (
-            <span
-              key={i}
-              className="text-[10px] sm:text-[11px] text-rural-white/50 bg-rural-white/[0.04] px-1.5 py-0.5 rounded-md self-start"
-            >
-              {getIngredientIcon(ing)} {ing}
-            </span>
-          ))}
+        <div className="flex-1">
+          <p className="text-[10px] sm:text-[11px] text-rural-white/45 leading-relaxed">
+            {ingredients.map((ing, i) => (
+              <span key={i}>
+                {getIngredientIcon(ing)} {ing}
+                {i < ingredients.length - 1 && <span className="text-rural-white/15"> · </span>}
+              </span>
+            ))}
+          </p>
         </div>
 
         {/* Price + add button — always at bottom */}
