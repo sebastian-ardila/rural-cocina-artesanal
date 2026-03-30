@@ -38,6 +38,8 @@
       "cerdo": "Pork",
       "desmechada": "Pulled Beef"
     },
+    "viewDish": "View dish",
+    "ingredients": "Ingredients",
     "confirm": "Confirm",
     "cancel": "Cancel",
     "comboIncludes": "Includes french fries"

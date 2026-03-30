@@ -7,15 +7,18 @@ import { menuItems, categories } from "@/data/menu";
 import { CategoryTabs, FilterValue } from "../menu/CategoryTabs";
 import { MenuCard } from "../menu/MenuCard";
 import { MeatChoiceModal } from "../menu/MeatChoiceModal";
+import { DishModal } from "../menu/DishModal";
 
 export function MenuSection({ locale }: { locale: string }) {
   const t = useTranslations("menu");
   const [activeFilter, setActiveFilter] = useState<FilterValue>("all");
   const [meatChoiceItem, setMeatChoiceItem] = useState<MenuItem | null>(null);
+  const [viewDishItem, setViewDishItem] = useState<MenuItem | null>(null);
+
+  const gridClass = "grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5";
 
   return (
     <section id="carta" className="py-20 sm:py-28 relative">
-      {/* Subtle background texture */}
       <div className="absolute inset-0 wood-texture opacity-20 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -47,25 +50,24 @@ export function MenuSection({ locale }: { locale: string }) {
         {activeFilter === "all" ? (
           <div className="space-y-16">
             {categories.map((cat) => {
-              const items = menuItems.filter((i) => i.category === cat.id);
-              if (items.length === 0) return null;
+              const filtered = menuItems.filter((i) => i.category === cat.id);
+              if (filtered.length === 0) return null;
               return (
                 <div key={cat.id}>
-                  {/* Category header */}
-                  <div className="flex items-center gap-5 mb-8">
+                  <div className="flex items-center gap-5 mb-6">
                     <h3 className="font-display text-2xl sm:text-3xl font-bold text-rural-white whitespace-nowrap">
                       {locale === "es" ? cat.label.es : cat.label.en}
                     </h3>
                     <div className="h-px flex-1 bg-gradient-to-r from-rural-gold/20 to-transparent" />
                   </div>
-                  {/* Products grid */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-                    {items.map((item) => (
+                  <div className={gridClass}>
+                    {filtered.map((item) => (
                       <MenuCard
                         key={item.id}
                         item={item}
                         locale={locale}
                         onMeatChoice={setMeatChoiceItem}
+                        onViewDish={setViewDishItem}
                       />
                     ))}
                   </div>
@@ -74,7 +76,7 @@ export function MenuSection({ locale }: { locale: string }) {
             })}
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          <div className={gridClass}>
             {menuItems
               .filter((item) => item.category === activeFilter)
               .map((item) => (
@@ -83,17 +85,26 @@ export function MenuSection({ locale }: { locale: string }) {
                   item={item}
                   locale={locale}
                   onMeatChoice={setMeatChoiceItem}
+                  onViewDish={setViewDishItem}
                 />
               ))}
           </div>
         )}
 
-        {/* Meat choice modal */}
+        {/* Modals */}
         {meatChoiceItem && (
           <MeatChoiceModal
             item={meatChoiceItem}
             locale={locale}
             onClose={() => setMeatChoiceItem(null)}
+          />
+        )}
+        {viewDishItem && (
+          <DishModal
+            item={viewDishItem}
+            locale={locale}
+            onClose={() => setViewDishItem(null)}
+            onMeatChoice={setMeatChoiceItem}
           />
         )}
       </div>
