@@ -1,0 +1,144 @@
+{
+  "nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "reservations": "Reservations",
+    "contact": "Contact",
+    "schedule": "Hours",
+    "history": "Our Story",
+    "cart": "Cart"
+  },
+  "hero": {
+    "title": "Rural Cocina Artesanal",
+    "subtitle": "Born in Salento, grown in Pereira. Artisan flavors with a countryside soul.",
+    "cta": "View our menu"
+  },
+  "history": {
+    "title": "Our Story",
+    "text": "From the mountains of Salento in the heart of Quindio, we brought our passion for artisan cuisine to Pereira. Every recipe carries the flavor of the Colombian countryside, prepared with fresh ingredients and the love of our coffee region.",
+    "originTitle": "From Salento to Pereira",
+    "originText": "Rural Cocina Artesanal was born on the colorful streets of Salento, Quindio, in the heart of Colombia's Coffee Region. With Gustavo's dream of bringing authentic countryside flavors to more people, we moved to Pereira, to the Poblado 2 neighborhood, where today we continue cooking with the same passion and love for artisan food.",
+    "philosophyTitle": "Cooking with Soul",
+    "philosophyText": "Every burger, every arepaburger, and every dish that comes out of our kitchen is prepared with fresh ingredients and artisan recipes. We don't take shortcuts. Our meat is 100% artisan, our pineapple is caramelized on the spot, and our sauces are homemade. We believe that good food is made with time, dedication, and a lot of heart.",
+    "todayTitle": "Rural Today",
+    "todayText": "Today Rural is more than a restaurant. It's a gathering place for families, friends, and food lovers in Pereira. With delivery across the city and an ever-growing menu, we stay true to our roots: artisan cuisine with a countryside soul. We welcome you Monday through Friday from 3:00 PM to 10:00 PM, and Saturdays, Sundays and holidays from 3:00 PM to 11:00 PM.",
+    "ctaText": "Discover everything we have for you",
+    "ctaButton": "View our menu"
+  },
+  "menu": {
+    "title": "Our Menu",
+    "addToCart": "Add",
+    "added": "Added",
+    "vegetarian": "Vegetarian",
+    "chooseMeat": "Choose your protein",
+    "meatOptions": {
+      "res": "Beef",
+      "pollo": "Chicken",
+      "trucha": "Trout",
+      "cerdo": "Pork",
+      "desmechada": "Pulled Beef"
+    },
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "comboIncludes": "Includes french fries"
+  },
+  "categories": {
+    "all": "All",
+    "arepaburger": "Arepaburger",
+    "hamburguesa": "Burgers",
+    "combo": "Combos",
+    "extra": "Extras",
+    "papas-topping": "Loaded Fries"
+  },
+  "cart": {
+    "title": "Your Order",
+    "empty": "Your cart is empty",
+    "emptyMessage": "Add products from our menu to start your order.",
+    "total": "Total",
+    "sendWhatsApp": "Send order via WhatsApp",
+    "remove": "Remove",
+    "close": "Close",
+    "items": "items"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Interested in our business? Franchises, suppliers, collaborations and more.",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "interestType": "Type of interest",
+    "interestOptions": {
+      "franchise": "Franchise",
+      "supplier": "Supplier",
+      "collaboration": "Collaboration",
+      "events": "Events",
+      "other": "Other"
+    },
+    "message": "Message",
+    "send": "Send via WhatsApp",
+    "namePlaceholder": "Your full name",
+    "emailPlaceholder": "email@example.com",
+    "phonePlaceholder": "+57 300 000 0000",
+    "messagePlaceholder": "Tell us what you're interested in..."
+  },
+  "reservations": {
+    "title": "Reservations",
+    "subtitle": "Book your table at Rural Cocina Artesanal",
+    "name": "Name",
+    "people": "Number of guests",
+    "date": "Date",
+    "time": "Time",
+    "comments": "Additional comments",
+    "commentsPlaceholder": "Any special requests, celebrations, etc.",
+    "send": "Book via WhatsApp",
+    "namePlaceholder": "Your full name",
+    "scheduleNote": "Mon-Fri: 3:00 PM - 10:00 PM | Sat-Sun & Holidays: 3:00 PM - 11:00 PM",
+    "selectDate": "Select a date",
+    "selectTime": "Select a time",
+    "person": "guest",
+    "persons": "guests"
+  },
+  "videos": {
+    "title": "Videos",
+    "subtitle": "Learn more about Rural Cocina Artesanal",
+    "comingSoon": "Coming Soon",
+    "comingSoonMessage": "We're preparing amazing content for you. Come back soon!"
+  },
+  "schedulePage": {
+    "title": "Hours",
+    "subtitle": "We're waiting for you with open arms",
+    "weekdaysLabel": "Monday to Friday",
+    "weekdaysHours": "3:00 PM – 10:00 PM",
+    "weekendsLabel": "Saturday & Sunday",
+    "weekendsHours": "3:00 PM – 11:00 PM",
+    "holidaysLabel": "Holidays",
+    "holidaysHours": "3:00 PM – 11:00 PM",
+    "address": "Poblado 2, Mz 31, Cs 15, Pereira, Colombia",
+    "delivery": "Delivery across all Pereira",
+    "deliveryNote": "Place your order via WhatsApp and we'll deliver it wherever you are.",
+    "ctaReserve": "Book a table",
+    "ctaWhatsApp": "Order via WhatsApp"
+  },
+  "footer": {
+    "address": "Poblado 2, Mz 31, Cs 15, Pereira, Colombia",
+    "schedule": "Hours",
+    "weekdays": "Monday to Friday: 3:00 PM – 10:00 PM",
+    "weekends": "Saturdays, Sundays & Holidays: 3:00 PM – 11:00 PM",
+    "delivery": "Delivery across all Pereira",
+    "followUs": "Follow Us",
+    "rights": "All rights reserved."
+  },
+  "whatsapp": {
+    "orderHeader": "Hi! I'd like to place an order:",
+    "orderItem": "{quantity}x {name} - ${price}",
+    "orderMeat": "(Protein: {meat})",
+    "orderTotal": "Total: ${total}",
+    "contactHeader": "Hi! I'm reaching out from the Rural Cocina Artesanal website.",
+    "reservationHeader": "Hi! I'd like to make a reservation:",
+    "reservationName": "Name: {name}",
+    "reservationPeople": "Guests: {people}",
+    "reservationDate": "Date: {date}",
+    "reservationTime": "Time: {time}",
+    "reservationComments": "Comments: {comments}"
+  }
+}

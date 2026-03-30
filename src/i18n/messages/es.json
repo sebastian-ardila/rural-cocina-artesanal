@@ -1,0 +1,144 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "menu": "Carta",
+    "reservations": "Reservas",
+    "contact": "Contacto",
+    "schedule": "Horarios",
+    "history": "Historia",
+    "cart": "Carrito"
+  },
+  "hero": {
+    "title": "Rural Cocina Artesanal",
+    "subtitle": "Nacimos en Salento, crecimos en Pereira. Sabores artesanales con alma de campo.",
+    "cta": "Ver nuestra carta"
+  },
+  "history": {
+    "title": "Nuestra Historia",
+    "text": "Desde las montañas de Salento en el corazón del Quindío, trajimos a Pereira nuestra pasión por la cocina artesanal. Cada receta lleva el sabor del campo colombiano, preparada con ingredientes frescos y el amor de nuestra tierra cafetera.",
+    "originTitle": "De Salento a Pereira",
+    "originText": "Rural Cocina Artesanal nació en las calles coloridas de Salento, Quindío, en el corazón del Eje Cafetero colombiano. Con el sueño de Gustavo de llevar los sabores auténticos del campo a más personas, nos mudamos a Pereira, al barrio Poblado 2, donde hoy seguimos cocinando con la misma pasión y amor por lo artesanal.",
+    "philosophyTitle": "Cocina con Alma",
+    "philosophyText": "Cada hamburguesa, cada arepaburger y cada plato que sale de nuestra cocina es preparado con ingredientes frescos y recetas artesanales. No usamos atajos. Nuestra carne es 100% artesanal, nuestra piña es caramelizada al momento, y nuestras salsas son hechas en casa. Creemos que la buena comida se hace con tiempo, dedicación y mucho corazón.",
+    "todayTitle": "Rural Hoy",
+    "todayText": "Hoy Rural es más que un restaurante. Es un punto de encuentro para familias, amigos y amantes de la buena comida en Pereira. Con domicilios a toda la ciudad y un menú que sigue creciendo, seguimos fieles a nuestras raíces: cocina artesanal con alma de campo. Te esperamos de lunes a viernes de 3:00 PM a 10:00 PM, y sábados, domingos y festivos de 3:00 PM a 11:00 PM.",
+    "ctaText": "Conoce todo lo que tenemos para ti",
+    "ctaButton": "Ver nuestra carta"
+  },
+  "menu": {
+    "title": "Nuestra Carta",
+    "addToCart": "Agregar",
+    "added": "Agregado",
+    "vegetarian": "Vegetariano",
+    "chooseMeat": "Elige tu proteína",
+    "meatOptions": {
+      "res": "Res",
+      "pollo": "Pollo",
+      "trucha": "Trucha",
+      "cerdo": "Cerdo",
+      "desmechada": "Desmechada"
+    },
+    "confirm": "Confirmar",
+    "cancel": "Cancelar",
+    "comboIncludes": "Incluye papas a la francesa"
+  },
+  "categories": {
+    "all": "Todos",
+    "arepaburger": "Arepaburger",
+    "hamburguesa": "Hamburguesas",
+    "combo": "Combos",
+    "extra": "Extras",
+    "papas-topping": "Papas con Topping"
+  },
+  "cart": {
+    "title": "Tu Pedido",
+    "empty": "Tu carrito está vacío",
+    "emptyMessage": "Agrega productos desde nuestra carta para empezar tu pedido.",
+    "total": "Total",
+    "sendWhatsApp": "Enviar pedido por WhatsApp",
+    "remove": "Eliminar",
+    "close": "Cerrar",
+    "items": "productos"
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "¿Interesado en nuestro negocio? Franquicias, proveedores, colaboraciones y más.",
+    "name": "Nombre",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "interestType": "Tipo de interés",
+    "interestOptions": {
+      "franchise": "Franquicia",
+      "supplier": "Proveedor",
+      "collaboration": "Colaboración",
+      "events": "Eventos",
+      "other": "Otro"
+    },
+    "message": "Mensaje",
+    "send": "Enviar por WhatsApp",
+    "namePlaceholder": "Tu nombre completo",
+    "emailPlaceholder": "correo@ejemplo.com",
+    "phonePlaceholder": "+57 300 000 0000",
+    "messagePlaceholder": "Cuéntanos en qué estás interesado..."
+  },
+  "reservations": {
+    "title": "Reservas",
+    "subtitle": "Reserva tu mesa en Rural Cocina Artesanal",
+    "name": "Nombre",
+    "people": "Número de personas",
+    "date": "Fecha",
+    "time": "Hora",
+    "comments": "Comentarios adicionales",
+    "commentsPlaceholder": "Alguna petición especial, celebración, etc.",
+    "send": "Reservar por WhatsApp",
+    "namePlaceholder": "Tu nombre completo",
+    "scheduleNote": "Lun-Vie: 3:00 PM - 10:00 PM | Sáb-Dom y Festivos: 3:00 PM - 11:00 PM",
+    "selectDate": "Selecciona una fecha",
+    "selectTime": "Selecciona una hora",
+    "person": "persona",
+    "persons": "personas"
+  },
+  "videos": {
+    "title": "Videos",
+    "subtitle": "Conoce más sobre Rural Cocina Artesanal",
+    "comingSoon": "Próximamente",
+    "comingSoonMessage": "Estamos preparando contenido increíble para ti. ¡Vuelve pronto!"
+  },
+  "schedulePage": {
+    "title": "Horarios",
+    "subtitle": "Te esperamos con los brazos abiertos",
+    "weekdaysLabel": "Lunes a Viernes",
+    "weekdaysHours": "3:00 PM – 10:00 PM",
+    "weekendsLabel": "Sábados y Domingos",
+    "weekendsHours": "3:00 PM – 11:00 PM",
+    "holidaysLabel": "Festivos",
+    "holidaysHours": "3:00 PM – 11:00 PM",
+    "address": "Poblado 2, Mz 31, Cs 15, Pereira, Colombia",
+    "delivery": "Domicilios a todo Pereira",
+    "deliveryNote": "Haz tu pedido por WhatsApp y te lo llevamos a donde estés.",
+    "ctaReserve": "Reservar mesa",
+    "ctaWhatsApp": "Pedir por WhatsApp"
+  },
+  "footer": {
+    "address": "Poblado 2, Mz 31, Cs 15, Pereira, Colombia",
+    "schedule": "Horarios",
+    "weekdays": "Lunes a Viernes: 3:00 PM – 10:00 PM",
+    "weekends": "Sábados, Domingos y Festivos: 3:00 PM – 11:00 PM",
+    "delivery": "Domicilios a todo Pereira",
+    "followUs": "Síguenos",
+    "rights": "Todos los derechos reservados."
+  },
+  "whatsapp": {
+    "orderHeader": "Hola! Quiero hacer un pedido:",
+    "orderItem": "{quantity}x {name} - ${price}",
+    "orderMeat": "(Proteína: {meat})",
+    "orderTotal": "Total: ${total}",
+    "contactHeader": "Hola! Me comunico desde la web de Rural Cocina Artesanal.",
+    "reservationHeader": "Hola! Quiero hacer una reserva:",
+    "reservationName": "Nombre: {name}",
+    "reservationPeople": "Personas: {people}",
+    "reservationDate": "Fecha: {date}",
+    "reservationTime": "Hora: {time}",
+    "reservationComments": "Comentarios: {comments}"
+  }
+}

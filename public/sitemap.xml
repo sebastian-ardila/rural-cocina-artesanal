@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://rural-cocina-artesanal.com/es/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://rural-cocina-artesanal.com/es/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://rural-cocina-artesanal.com/en/" />
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://rural-cocina-artesanal.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://rural-cocina-artesanal.com/es/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://rural-cocina-artesanal.com/en/" />
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://rural-cocina-artesanal.com/es/contacto/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://rural-cocina-artesanal.com/es/contacto/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://rural-cocina-artesanal.com/en/contacto/" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rural-cocina-artesanal.com/en/contacto/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://rural-cocina-artesanal.com/es/contacto/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://rural-cocina-artesanal.com/en/contacto/" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rural-cocina-artesanal.com/es/reservas/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://rural-cocina-artesanal.com/es/reservas/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://rural-cocina-artesanal.com/en/reservas/" />
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://rural-cocina-artesanal.com/en/reservas/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://rural-cocina-artesanal.com/es/reservas/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://rural-cocina-artesanal.com/en/reservas/" />
+    <priority>0.8</priority>
+  </url>
+</urlset>
