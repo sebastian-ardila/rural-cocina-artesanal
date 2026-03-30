@@ -5,6 +5,7 @@ import { X } from "lucide-react";
 import { MenuItem } from "@/types/menu";
 import { useCartStore } from "@/store/cart-store";
 import { formatPrice, getBasePath } from "@/lib/utils";
+import { getIngredientIcon } from "@/lib/ingredients";
 
 export function DishModal({
   item,
@@ -124,7 +125,7 @@ export function DishModal({
                   key={i}
                   className="px-3 py-1.5 bg-rural-white/[0.04] border border-rural-white/[0.06] rounded-full text-sm text-rural-white/60"
                 >
-                  {ingredient}
+                  {getIngredientIcon(ingredient)} {ingredient}
                 </span>
               ))}
             </div>

@@ -5,6 +5,7 @@ import { Eye } from "lucide-react";
 import { MenuItem } from "@/types/menu";
 import { useCartStore } from "@/store/cart-store";
 import { formatPrice, getBasePath } from "@/lib/utils";
+import { getIngredientIcon } from "@/lib/ingredients";
 
 export function MenuCard({
   item,
@@ -23,40 +24,28 @@ export function MenuCard({
 
   const name = locale === "es" ? item.name.es : item.name.en;
   const description = locale === "es" ? item.description.es : item.description.en;
+  const ingredients = description.split(",").map((s) => s.trim()).filter(Boolean);
 
   const quantity = item.requiresMeatChoice ? 0 : getItemQuantity(item.id);
   const meatChoiceTotal = item.requiresMeatChoice
-    ? items
-        .filter((i) => i.menuItemId === item.id)
-        .reduce((sum, i) => sum + i.quantity, 0)
+    ? items.filter((i) => i.menuItemId === item.id).reduce((sum, i) => sum + i.quantity, 0)
     : 0;
   const totalInCart = quantity + meatChoiceTotal;
 
   const handleAdd = () => {
-    if (item.requiresMeatChoice) {
-      onMeatChoice(item);
-      return;
-    }
-    addItem({
-      menuItemId: item.id,
-      name: item.name,
-      price: item.price,
-      image: item.image,
-    });
+    if (item.requiresMeatChoice) { onMeatChoice(item); return; }
+    addItem({ menuItemId: item.id, name: item.name, price: item.price, image: item.image });
   };
 
   const handleDecrement = () => {
-    if (item.requiresMeatChoice) {
-      onMeatChoice(item);
-      return;
-    }
+    if (item.requiresMeatChoice) { onMeatChoice(item); return; }
     updateQuantity(item.id, quantity - 1);
   };
 
   return (
-    <div className="relative rounded-2xl overflow-hidden group border border-rural-white/[0.07] hover:border-rural-gold/25 transition-all duration-300 hover:shadow-lg hover:shadow-rural-gold/5">
-      {/* Background image / placeholder */}
-      <div className="relative aspect-[3/4] sm:aspect-[4/5]">
+    <div className="relative rounded-2xl overflow-hidden group border border-rural-white/[0.07] hover:border-rural-gold/25 transition-all duration-300 hover:shadow-lg hover:shadow-rural-gold/5 flex flex-col">
+      {/* Image area */}
+      <div className="relative aspect-[4/3] shrink-0">
         {item.image ? (
           <img
             src={`${basePath}${item.image}`}
@@ -69,74 +58,84 @@ export function MenuCard({
             <img
               src={`${basePath}/images/rural-logo.png`}
               alt=""
-              width={40}
-              height={40}
+              width={36}
+              height={36}
               className="opacity-15 rounded-full"
             />
           </div>
         )}
+        <div className="absolute inset-0 bg-gradient-to-t from-rural-black/70 to-transparent" />
 
-        {/* Full overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-rural-black via-rural-black/50 to-rural-black/20" />
-
-        {/* Top row: vegetarian badge + view dish button */}
-        <div className="absolute top-0 inset-x-0 p-2.5 flex items-start justify-between">
+        {/* Top badges */}
+        <div className="absolute top-0 inset-x-0 p-2 flex items-start justify-between">
           {item.isVegetarian ? (
-            <span className="bg-green-600/90 text-white text-[10px] px-2 py-0.5 rounded-full font-semibold backdrop-blur-sm uppercase tracking-wide">
+            <span className="bg-green-600/90 text-white text-[9px] px-2 py-0.5 rounded-full font-semibold backdrop-blur-sm uppercase">
               {t("vegetarian")}
             </span>
-          ) : (
-            <span />
-          )}
+          ) : <span />}
           <button
             onClick={() => onViewDish(item)}
-            className="flex items-center gap-1 bg-rural-black/60 backdrop-blur-sm text-rural-white/80 hover:text-rural-gold text-[11px] font-medium px-2.5 py-1.5 rounded-full transition-colors"
+            className="flex items-center gap-1 bg-rural-black/60 backdrop-blur-sm text-rural-white/80 hover:text-rural-gold text-[10px] font-medium px-2 py-1 rounded-full transition-colors"
           >
-            <Eye className="w-3.5 h-3.5" />
+            <Eye className="w-3 h-3" />
             <span className="hidden sm:inline">{t("viewDish")}</span>
           </button>
         </div>
 
-        {/* Bottom content overlay */}
-        <div className="absolute bottom-0 inset-x-0 p-3 sm:p-4">
-          <h3 className="font-display text-sm sm:text-base font-bold text-white leading-tight line-clamp-2">
+        {/* Name on image */}
+        <div className="absolute bottom-0 inset-x-0 p-2.5 sm:p-3">
+          <h3 className="font-display text-sm sm:text-base font-bold text-white leading-tight">
             {name}
           </h3>
-          <p className="text-[10px] sm:text-xs text-rural-white/40 mt-1 line-clamp-2 leading-relaxed">
-            {description}
-          </p>
-          <div className="flex items-center justify-between mt-2">
-            <span className="text-sm sm:text-base font-bold text-rural-gold">
-              {formatPrice(item.price)}
-            </span>
+        </div>
+      </div>
 
-            {totalInCart > 0 ? (
-              <div className="flex items-center gap-1.5">
-                <button
-                  onClick={handleDecrement}
-                  className="w-7 h-7 rounded-full bg-rural-gold/20 border border-rural-gold/40 flex items-center justify-center text-rural-gold text-sm font-bold"
-                >
-                  -
-                </button>
-                <span className="text-sm font-bold text-rural-gold min-w-[1.2rem] text-center">
-                  {totalInCart}
-                </span>
-                <button
-                  onClick={handleAdd}
-                  className="w-7 h-7 rounded-full bg-rural-gold text-rural-black flex items-center justify-center text-sm font-bold"
-                >
-                  +
-                </button>
-              </div>
-            ) : (
+      {/* Content below image */}
+      <div className="p-2.5 sm:p-3 flex flex-col flex-1 bg-rural-black">
+        {/* Ingredients */}
+        <div className="flex flex-wrap gap-1 mb-3">
+          {ingredients.map((ing, i) => (
+            <span
+              key={i}
+              className="text-[10px] sm:text-[11px] text-rural-white/50 bg-rural-white/[0.04] px-1.5 py-0.5 rounded-md"
+            >
+              {getIngredientIcon(ing)} {ing}
+            </span>
+          ))}
+        </div>
+
+        {/* Price + add button */}
+        <div className="flex items-center justify-between mt-auto">
+          <span className="text-sm sm:text-base font-bold text-rural-gold">
+            {formatPrice(item.price)}
+          </span>
+
+          {totalInCart > 0 ? (
+            <div className="flex items-center gap-1.5">
+              <button
+                onClick={handleDecrement}
+                className="w-7 h-7 rounded-full bg-rural-gold/20 border border-rural-gold/40 flex items-center justify-center text-rural-gold text-sm font-bold"
+              >
+                -
+              </button>
+              <span className="text-sm font-bold text-rural-gold min-w-[1.2rem] text-center">
+                {totalInCart}
+              </span>
               <button
                 onClick={handleAdd}
-                className="px-3 py-1.5 bg-rural-gold/15 border border-rural-gold/30 text-rural-gold text-xs sm:text-sm font-semibold rounded-full hover:bg-rural-gold hover:text-rural-black transition-all"
+                className="w-7 h-7 rounded-full bg-rural-gold text-rural-black flex items-center justify-center text-sm font-bold"
               >
                 +
               </button>
-            )}
-          </div>
+            </div>
+          ) : (
+            <button
+              onClick={handleAdd}
+              className="w-8 h-8 rounded-full bg-rural-gold/15 border border-rural-gold/30 text-rural-gold flex items-center justify-center hover:bg-rural-gold hover:text-rural-black transition-all text-lg font-bold"
+            >
+              +
+            </button>
+          )}
         </div>
       </div>
     </div>
