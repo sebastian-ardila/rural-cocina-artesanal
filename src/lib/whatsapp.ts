@@ -17,27 +17,41 @@ export function buildOrderMessage(
   locale: string
 ): string {
   const isEs = locale === "es";
+
   const header = isEs
-    ? "Hola! Quiero hacer un pedido:"
-    : "Hi! I'd like to place an order:";
+    ? "🍔 *Pedido - Rural Cocina Artesanal*"
+    : "🍔 *Order - Rural Cocina Artesanal*";
+
+  const separator = "─────────────────";
 
   const lines = items.map((item) => {
     const name = isEs ? item.name.es : item.name.en;
+    const unitPrice = formatPrice(item.price);
     const subtotal = formatPrice(item.price * item.quantity);
-    let line = `- ${item.quantity}x ${name} - ${subtotal}`;
+    let line = `• ${item.quantity}x *${name}*\n  ${unitPrice} c/u → ${subtotal}`;
     if (item.meatChoice) {
       const meatLabel = isEs
         ? MEAT_LABELS[item.meatChoice].es
         : MEAT_LABELS[item.meatChoice].en;
-      line += ` (${isEs ? "Proteína" : "Protein"}: ${meatLabel})`;
+      line += `\n  _${isEs ? "Proteína" : "Protein"}: ${meatLabel}_`;
     }
     return line;
   });
 
-  const totalLine = `\n${isEs ? "Total" : "Total"}: ${formatPrice(total)}`;
-  const thanks = isEs ? "\nGracias!" : "\nThank you!";
+  const totalLabel = isEs ? "💰 *Total*" : "💰 *Total*";
+  const thanks = isEs
+    ? "¡Gracias! Quedo atento a la confirmación."
+    : "Thank you! I'll wait for confirmation.";
 
-  return `${header}\n\n${lines.join("\n")}${totalLine}${thanks}`;
+  return [
+    header,
+    separator,
+    ...lines,
+    separator,
+    `${totalLabel}: ${formatPrice(total)}`,
+    "",
+    thanks,
+  ].join("\n");
 }
 
 export function buildContactMessage(
@@ -51,19 +65,24 @@ export function buildContactMessage(
   locale: string
 ): string {
   const isEs = locale === "es";
+
   const header = isEs
-    ? "Hola! Me comunico desde la web de Rural Cocina Artesanal."
-    : "Hi! I'm reaching out from the Rural Cocina Artesanal website.";
+    ? "📩 *Contacto - Rural Cocina Artesanal*"
+    : "📩 *Contact - Rural Cocina Artesanal*";
+
+  const separator = "─────────────────";
 
   const lines = [
-    `${isEs ? "Nombre" : "Name"}: ${data.name}`,
-    `${isEs ? "Email" : "Email"}: ${data.email}`,
-    `${isEs ? "Teléfono" : "Phone"}: ${data.phone}`,
-    `${isEs ? "Tipo de interés" : "Interest"}: ${data.interestType}`,
-    `\n${isEs ? "Mensaje" : "Message"}:\n${data.message}`,
+    `*${isEs ? "Nombre" : "Name"}:* ${data.name}`,
+    `*${isEs ? "Email" : "Email"}:* ${data.email}`,
+    `*${isEs ? "Teléfono" : "Phone"}:* ${data.phone}`,
+    `*${isEs ? "Interés" : "Interest"}:* ${data.interestType}`,
+    "",
+    `*${isEs ? "Mensaje" : "Message"}:*`,
+    data.message,
   ];
 
-  return `${header}\n\n${lines.join("\n")}`;
+  return [header, separator, ...lines].join("\n");
 }
 
 export function buildReservationMessage(
@@ -77,25 +96,36 @@ export function buildReservationMessage(
   locale: string
 ): string {
   const isEs = locale === "es";
+
   const header = isEs
-    ? "Hola! Quiero hacer una reserva:"
-    : "Hi! I'd like to make a reservation:";
+    ? "📅 *Reserva - Rural Cocina Artesanal*"
+    : "📅 *Reservation - Rural Cocina Artesanal*";
+
+  const separator = "─────────────────";
 
   const lines = [
-    `${isEs ? "Nombre" : "Name"}: ${data.name}`,
-    `${isEs ? "Personas" : "Guests"}: ${data.people}`,
-    `${isEs ? "Fecha" : "Date"}: ${data.date}`,
-    `${isEs ? "Hora" : "Time"}: ${data.time}`,
+    `*${isEs ? "Nombre" : "Name"}:* ${data.name}`,
+    `*${isEs ? "Personas" : "Guests"}:* ${data.people}`,
+    `*${isEs ? "Fecha" : "Date"}:* ${data.date}`,
+    `*${isEs ? "Hora" : "Time"}:* ${data.time}`,
   ];
 
   if (data.comments) {
-    lines.push(`${isEs ? "Comentarios" : "Comments"}: ${data.comments}`);
+    lines.push("");
+    lines.push(`*${isEs ? "Comentarios" : "Comments"}:*`);
+    lines.push(data.comments);
   }
 
-  return `${header}\n\n${lines.join("\n")}`;
+  const thanks = isEs
+    ? "\n¡Gracias! Quedo atento a la confirmación."
+    : "\nThank you! I'll wait for confirmation.";
+
+  return [header, separator, ...lines, thanks].join("\n");
 }
 
 export function openWhatsApp(message: string): void {
   const encoded = encodeURIComponent(message);
-  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`, "_blank");
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
+  // Use location.href to avoid popup blockers on mobile
+  window.location.href = url;
 }
