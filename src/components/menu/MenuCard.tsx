@@ -5,7 +5,7 @@ import { Eye } from "lucide-react";
 import { MenuItem } from "@/types/menu";
 import { useCartStore } from "@/store/cart-store";
 import { formatPrice, getBasePath } from "@/lib/utils";
-import { getIngredientIcon } from "@/lib/ingredients";
+import { getIngredientIcon, parseIngredients } from "@/lib/ingredients";
 
 export function MenuCard({
   item,
@@ -24,7 +24,7 @@ export function MenuCard({
 
   const name = locale === "es" ? item.name.es : item.name.en;
   const description = locale === "es" ? item.description.es : item.description.en;
-  const ingredients = description.split(",").map((s) => s.trim()).filter(Boolean);
+  const ingredients = parseIngredients(description);
 
   const quantity = item.requiresMeatChoice ? 0 : getItemQuantity(item.id);
   const meatChoiceTotal = item.requiresMeatChoice

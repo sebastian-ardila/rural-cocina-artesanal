@@ -83,3 +83,10 @@ export function getIngredientIcon(ingredient: string): string {
   }
   return "•";
 }
+
+export function parseIngredients(description: string): string[] {
+  return description
+    .split(/,| y | & | and /i)
+    .map((s) => s.trim())
+    .filter(Boolean);
+}

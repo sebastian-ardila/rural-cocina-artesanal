@@ -5,7 +5,7 @@ import { X } from "lucide-react";
 import { MenuItem } from "@/types/menu";
 import { useCartStore } from "@/store/cart-store";
 import { formatPrice, getBasePath } from "@/lib/utils";
-import { getIngredientIcon } from "@/lib/ingredients";
+import { getIngredientIcon, parseIngredients } from "@/lib/ingredients";
 
 export function DishModal({
   item,
@@ -54,8 +54,7 @@ export function DishModal({
     updateQuantity(item.id, quantity - 1);
   };
 
-  // Parse ingredients from description
-  const ingredients = description.split(",").map((s) => s.trim()).filter(Boolean);
+  const ingredients = parseIngredients(description);
 
   return (
     <div
