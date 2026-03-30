@@ -58,7 +58,19 @@
     "sendWhatsApp": "Send order via WhatsApp",
     "remove": "Remove",
     "close": "Close",
-    "items": "items"
+    "items": "items",
+    "step2Title": "Order details",
+    "customerName": "Your name",
+    "customerNamePlaceholder": "Name",
+    "paymentMethod": "Payment method",
+    "paymentNequi": "Nequi",
+    "paymentTransfer": "Transfer",
+    "paymentCash": "Cash",
+    "orderType": "Order type",
+    "orderTable": "Dine in",
+    "orderDelivery": "Delivery",
+    "continue": "Continue",
+    "back": "Back"
   },
   "contact": {
     "title": "Contact",

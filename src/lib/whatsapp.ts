@@ -14,52 +14,35 @@ const MEAT_LABELS: Record<MeatOption, { es: string; en: string }> = {
 export function buildOrderMessage(
   items: CartItem[],
   total: number,
-  locale: string
+  locale: string,
+  customerName: string,
+  paymentMethod: string,
+  orderType: string
 ): string {
   const isEs = locale === "es";
 
-  const header = isEs
-    ? "🍔 *Pedido - Rural Cocina Artesanal* 🔥"
-    : "🍔 *Order - Rural Cocina Artesanal* 🔥";
-
-  const separator = "━━━━━━━━━━━━━━━━━";
-
   const lines = items.map((item) => {
     const name = isEs ? item.name.es : item.name.en;
-    const unitPrice = formatPrice(item.price);
     const subtotal = formatPrice(item.price * item.quantity);
-    let line = `🛒 ${item.quantity}x *${name}*\n   💲 ${unitPrice} c/u → *${subtotal}*`;
+    let line = `🍔 ${item.quantity}x ${name} — ${subtotal}`;
     if (item.meatChoice) {
       const meatLabel = isEs
         ? MEAT_LABELS[item.meatChoice].es
         : MEAT_LABELS[item.meatChoice].en;
-      line += `\n   🥩 _${isEs ? "Proteína" : "Protein"}: ${meatLabel}_`;
+      line += ` (🥩 ${meatLabel})`;
     }
     return line;
   });
 
-  const totalLine = `💰 *${isEs ? "TOTAL" : "TOTAL"}:* ${formatPrice(total)}`;
-
-  const thanks = isEs
-    ? "🙏 ¡Gracias! Quedo atento a la confirmación."
-    : "🙏 Thank you! I'll wait for confirmation.";
-
-  const delivery = isEs
-    ? "🏠 _¿Domicilio o para recoger?_"
-    : "🏠 _Delivery or pickup?_";
-
   return [
-    header,
+    isEs ? `👋 Hola, soy *${customerName}*` : `👋 Hi, I'm *${customerName}*`,
     "",
-    separator,
+    isEs ? "📋 *Mi pedido:*" : "📋 *My order:*",
     ...lines,
-    separator,
     "",
-    totalLine,
-    "",
-    delivery,
-    "",
-    thanks,
+    `💰 *Total:* ${formatPrice(total)}`,
+    `💳 *${isEs ? "Pago" : "Payment"}:* ${paymentMethod}`,
+    `📍 *${isEs ? "Tipo" : "Type"}:* ${orderType}`,
   ].join("\n");
 }
 
@@ -75,27 +58,15 @@ export function buildContactMessage(
 ): string {
   const isEs = locale === "es";
 
-  const header = isEs
-    ? "📩 *Contacto - Rural Cocina Artesanal* ✨"
-    : "📩 *Contact - Rural Cocina Artesanal* ✨";
-
-  const separator = "━━━━━━━━━━━━━━━━━";
-
-  const lines = [
-    `👤 *${isEs ? "Nombre" : "Name"}:* ${data.name}`,
-    `📧 *Email:* ${data.email}`,
-    `📱 *${isEs ? "Teléfono" : "Phone"}:* ${data.phone}`,
-    `🏷️ *${isEs ? "Interés" : "Interest"}:* ${data.interestType}`,
+  return [
+    isEs ? `👋 Hola, soy *${data.name}*` : `👋 Hi, I'm *${data.name}*`,
     "",
-    `💬 *${isEs ? "Mensaje" : "Message"}:*`,
-    data.message,
-  ];
-
-  const thanks = isEs
-    ? "\n🙏 ¡Gracias por contactarnos! Responderemos pronto."
-    : "\n🙏 Thank you for reaching out! We'll respond soon.";
-
-  return [header, "", separator, ...lines, thanks].join("\n");
+    `📧 ${data.email}`,
+    `📱 ${data.phone}`,
+    `🏷️ ${data.interestType}`,
+    "",
+    `💬 ${data.message}`,
+  ].join("\n");
 }
 
 export function buildReservationMessage(
@@ -110,37 +81,27 @@ export function buildReservationMessage(
 ): string {
   const isEs = locale === "es";
 
-  const header = isEs
-    ? "📅 *Reserva - Rural Cocina Artesanal* 🍽️"
-    : "📅 *Reservation - Rural Cocina Artesanal* 🍽️";
-
-  const separator = "━━━━━━━━━━━━━━━━━";
-
   const lines = [
-    `👤 *${isEs ? "Nombre" : "Name"}:* ${data.name}`,
-    `👥 *${isEs ? "Personas" : "Guests"}:* ${data.people}`,
-    `📆 *${isEs ? "Fecha" : "Date"}:* ${data.date}`,
-    `🕐 *${isEs ? "Hora" : "Time"}:* ${data.time}`,
+    isEs
+      ? `👋 Hola, soy *${data.name}*`
+      : `👋 Hi, I'm *${data.name}*`,
+    "",
+    isEs ? "📅 *Quiero reservar:*" : "📅 *I'd like to book:*",
+    `👥 ${data.people} ${isEs ? "personas" : "guests"}`,
+    `📆 ${data.date}`,
+    `🕐 ${data.time}`,
   ];
 
   if (data.comments) {
-    lines.push("");
-    lines.push(`💬 *${isEs ? "Comentarios" : "Comments"}:*`);
-    lines.push(data.comments);
+    lines.push(`💬 ${data.comments}`);
   }
 
-  const thanks = isEs
-    ? "\n🙏 ¡Gracias! Quedo atento a la confirmación de la reserva."
-    : "\n🙏 Thank you! I'll wait for the reservation confirmation.";
-
-  return [header, "", separator, ...lines, thanks].join("\n");
+  return lines.join("\n");
 }
 
 export function openWhatsApp(message: string): void {
   const encoded = encodeURIComponent(message);
   const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
-
-  // Create a temporary link and click it — works reliably on mobile and desktop
   const a = document.createElement("a");
   a.href = url;
   a.target = "_blank";

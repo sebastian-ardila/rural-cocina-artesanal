@@ -58,7 +58,19 @@
     "sendWhatsApp": "Enviar pedido por WhatsApp",
     "remove": "Eliminar",
     "close": "Cerrar",
-    "items": "productos"
+    "items": "productos",
+    "step2Title": "Datos del pedido",
+    "customerName": "Tu nombre",
+    "customerNamePlaceholder": "Nombre",
+    "paymentMethod": "Forma de pago",
+    "paymentNequi": "Nequi",
+    "paymentTransfer": "Transferencia",
+    "paymentCash": "Efectivo",
+    "orderType": "Tipo de pedido",
+    "orderTable": "Para la mesa",
+    "orderDelivery": "Domicilio",
+    "continue": "Continuar",
+    "back": "Volver"
   },
   "contact": {
     "title": "Contacto",
