@@ -139,5 +139,13 @@ export function buildReservationMessage(
 export function openWhatsApp(message: string): void {
   const encoded = encodeURIComponent(message);
   const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
-  window.location.href = url;
+
+  // Create a temporary link and click it — works reliably on mobile and desktop
+  const a = document.createElement("a");
+  a.href = url;
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 }
