@@ -42,53 +42,51 @@ export function MenuSection({ locale }: { locale: string }) {
   const stickyBarRef = useRef<HTMLDivElement>(null);
   const isScrollingRef = useRef(false);
 
-  /* ── 1 & 2. Scroll spy via scroll listener on scroll-root ── */
+  /* ── 1. IntersectionObserver — detect active category ── */
   useEffect(() => {
-    const scrollRoot = document.getElementById('scroll-root');
-    if (!scrollRoot) return;
+    const navH = getNavbarHeight();
+    const barH = stickyBarRef.current?.offsetHeight ?? 80;
+    const topOffset = navH + barH + 16;
 
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (isScrollingRef.current) return;
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveCategory(
+              entry.target.id.replace("cat-", "") as DisplayCategory
+            );
+          }
+        }
+      },
+      {
+        rootMargin: `-${topOffset}px 0px -60% 0px`,
+        threshold: 0,
+      }
+    );
+
+    allCatIds.forEach((id) => {
+      const el = document.getElementById(`cat-${id}`);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  /* ── 2. Clear active when not in the menu zone ── */
+  useEffect(() => {
     const onScroll = () => {
       if (isScrollingRef.current) return;
-
-      const barH = stickyBarRef.current?.offsetHeight ?? 80;
-      const rootTop = scrollRoot.getBoundingClientRect().top;
-      const detectionLine = rootTop + barH + 60;
-
-      // Check if menu section is in view
-      const menuEl = document.getElementById('carta');
-      if (menuEl) {
-        const menuTop = menuEl.getBoundingClientRect().top;
-        const menuBottom = menuEl.getBoundingClientRect().bottom;
-        if (menuBottom < rootTop || menuTop > rootTop + scrollRoot.clientHeight) {
-          setActiveCategory(null);
-          return;
-        }
-      }
-
-      let best: DisplayCategory | null = null;
-      let bestTop = -Infinity;
-
-      for (const id of allCatIds) {
-        const el = document.getElementById(`cat-${id}`);
-        if (!el) continue;
-        const top = el.getBoundingClientRect().top;
-        if (top <= detectionLine && top > bestTop) {
-          bestTop = top;
-          best = id as DisplayCategory;
-        }
-      }
-
-      if (!best) {
-        setActiveCategory(null);
-        return;
-      }
-
-      setActiveCategory(best);
+      const bar = stickyBarRef.current;
+      if (!bar) return;
+      const isStuck =
+        bar.getBoundingClientRect().top <= getNavbarHeight() + 1;
+      if (!isStuck) setActiveCategory(null);
     };
 
-    scrollRoot.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
-    return () => scrollRoot.removeEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   /* ── 3. Click category → scroll to section ── */
@@ -98,11 +96,11 @@ export function MenuSection({ locale }: { locale: string }) {
 
     const el = document.getElementById(`cat-${category}`);
     if (el) {
+      const navH = getNavbarHeight();
       const barH = stickyBarRef.current?.offsetHeight ?? 80;
-      const scrollRoot = document.getElementById('scroll-root') || document.documentElement;
       const y =
-        el.getBoundingClientRect().top - scrollRoot.getBoundingClientRect().top + scrollRoot.scrollTop - barH - 16;
-      scrollRoot.scrollTo({ top: y, behavior: "smooth" });
+        el.getBoundingClientRect().top + window.scrollY - navH - barH - 16;
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
 
     setTimeout(() => {
@@ -136,7 +134,7 @@ export function MenuSection({ locale }: { locale: string }) {
         {/* Sticky category bar */}
         <div
           ref={stickyBarRef}
-          className="sticky top-0 z-30 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-3 bg-rural-black border-b border-rural-white/[0.06]"
+          className="sticky top-16 sm:top-20 z-30 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-3 bg-rural-black/80 backdrop-blur-xl border-b border-rural-white/[0.06]"
         >
           <CategoryTabs
             activeCategory={activeCategory}

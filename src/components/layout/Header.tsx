@@ -37,10 +37,9 @@ export function Header({ locale }: { locale: string }) {
         setTimeout(tryObserve, 500);
         return;
       }
-      const scrollRoot = document.getElementById('scroll-root') || null;
       observer = new IntersectionObserver(
         ([entry]) => setCartaSectionVisible(entry.isIntersecting),
-        { threshold: 0, rootMargin: "-80px 0px 0px 0px", root: scrollRoot }
+        { threshold: 0, rootMargin: "-80px 0px 0px 0px" }
       );
       observer.observe(section);
     }

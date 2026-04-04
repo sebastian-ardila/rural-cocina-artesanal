@@ -50,13 +50,11 @@ export default async function LocaleLayout({
       <head>
         <meta name="theme-color" content="#1a1a1a" />
       </head>
-      <body className="h-[100dvh] overflow-hidden flex flex-col bg-rural-black text-rural-white font-body antialiased">
+      <body className="bg-rural-black text-rural-white font-body antialiased">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header locale={locale} />
-          <div id="scroll-root" className="flex-1 overflow-y-auto">
-            <main>{children}</main>
-            <Footer />
-          </div>
+          <main>{children}</main>
+          <Footer />
           <CartDrawer locale={locale} />
         </NextIntlClientProvider>
       </body>

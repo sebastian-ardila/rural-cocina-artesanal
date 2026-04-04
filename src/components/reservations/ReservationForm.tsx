@@ -119,7 +119,8 @@ export function ReservationForm({ locale }: { locale: string }) {
   };
 
   const openDatePicker = () => {
-    dateInputRef.current?.showPicker();
+    dateInputRef.current?.showPicker?.();
+    dateInputRef.current?.click();
   };
 
   const inputClass =
@@ -183,34 +184,36 @@ export function ReservationForm({ locale }: { locale: string }) {
           <label className="block text-sm font-semibold text-rural-white/60 mb-2 uppercase tracking-wider">
             {t("date")}
           </label>
-          <input
-            ref={dateInputRef}
-            type="date"
-            min={getMinDate()}
-            value={form.date}
-            onChange={(e) => update("date", e.target.value)}
-            className="sr-only"
-          />
-          <button
-            type="button"
-            onClick={openDatePicker}
-            className={`${inputClass} flex items-center gap-3 text-left ${
-              closed
-                ? "border-amber-500"
-                : tried && !form.date
-                  ? "border-red-500"
-                  : ""
-            }`}
-          >
-            <Calendar className="w-5 h-5 text-rural-gold shrink-0" />
-            <span
-              className={form.date ? "text-rural-white" : "text-rural-white/25"}
+          <div className="relative">
+            <input
+              ref={dateInputRef}
+              type="date"
+              min={getMinDate()}
+              value={form.date}
+              onChange={(e) => update("date", e.target.value)}
+              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+            />
+            <div
+              className={`${inputClass} flex items-center gap-3 pointer-events-none ${
+                closed
+                  ? "border-amber-500"
+                  : tried && !form.date
+                    ? "border-red-500"
+                    : ""
+              }`}
             >
-              {form.date
-                ? formatDateDisplay(form.date, locale)
-                : t("selectDateBtn")}
-            </span>
-          </button>
+              <Calendar className="w-5 h-5 text-rural-gold shrink-0" />
+              <span
+                className={
+                  form.date ? "text-rural-white" : "text-rural-white/25"
+                }
+              >
+                {form.date
+                  ? formatDateDisplay(form.date, locale)
+                  : t("selectDateBtn")}
+              </span>
+            </div>
+          </div>
           {tried && !form.date && (
             <p className="text-red-400 text-xs mt-1.5">{t("dateRequired")}</p>
           )}
