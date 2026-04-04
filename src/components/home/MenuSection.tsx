@@ -112,38 +112,41 @@ export function MenuSection({ locale }: { locale: string }) {
     "grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5";
 
   return (
-    <section id="carta" className="py-20 sm:py-28 relative">
-      <div className="absolute inset-0 wood-texture opacity-20 pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Section title */}
-        <div className="text-center mb-12">
-          <p className="text-rural-gold/60 text-sm font-medium uppercase tracking-[0.25em] mb-3">
-            {locale === "es" ? "Descubre" : "Discover"}
-          </p>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-rural-gold mb-4">
-            {t("title")}
-          </h2>
-          <div className="flex items-center justify-center gap-4">
-            <div className="h-px w-16 bg-gradient-to-r from-transparent to-rural-gold/40" />
-            <div className="w-2 h-2 rounded-full bg-rural-gold/60" />
-            <div className="h-px w-16 bg-gradient-to-l from-transparent to-rural-gold/40" />
-          </div>
-        </div>
-
-        {/* Sticky category bar */}
-        <div
-          ref={stickyBarRef}
-          className="sticky top-16 sm:top-20 z-30 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-3 bg-rural-black/80 backdrop-blur-xl border-b border-rural-white/[0.06]"
-        >
+    <>
+      {/* Sticky category bar — always below header */}
+      <div
+        ref={stickyBarRef}
+        className="sticky top-16 sm:top-20 z-30 bg-rural-black/80 backdrop-blur-xl border-b border-rural-white/[0.06]"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <CategoryTabs
             activeCategory={activeCategory}
             onSelect={scrollToCategory}
             locale={locale}
           />
         </div>
+      </div>
 
-        {/* All sections — no lazy loading */}
+      <section id="carta" className="py-20 sm:py-28 relative">
+        <div className="absolute inset-0 wood-texture opacity-20 pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          {/* Section title */}
+          <div className="text-center mb-12">
+            <p className="text-rural-gold/60 text-sm font-medium uppercase tracking-[0.25em] mb-3">
+              {locale === "es" ? "Descubre" : "Discover"}
+            </p>
+            <h2 className="font-display text-4xl sm:text-5xl font-bold text-rural-gold mb-4">
+              {t("title")}
+            </h2>
+            <div className="flex items-center justify-center gap-4">
+              <div className="h-px w-16 bg-gradient-to-r from-transparent to-rural-gold/40" />
+              <div className="w-2 h-2 rounded-full bg-rural-gold/60" />
+              <div className="h-px w-16 bg-gradient-to-l from-transparent to-rural-gold/40" />
+            </div>
+          </div>
+
+          {/* All sections — no lazy loading */}
         <div className="mt-10 space-y-16">
           {sections.map((section) => {
             const Icon = categoryIcons[section.id];
@@ -195,5 +198,6 @@ export function MenuSection({ locale }: { locale: string }) {
         )}
       </div>
     </section>
+    </>
   );
 }
