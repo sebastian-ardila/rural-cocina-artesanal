@@ -192,6 +192,9 @@ export function ReservationForm({ locale }: { locale: string }) {
               min={getMinDate()}
               value={form.date}
               onChange={(e) => update("date", e.target.value)}
+              onClick={(e) =>
+                (e.target as HTMLInputElement).showPicker?.()
+              }
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
             />
             <div
