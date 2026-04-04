@@ -108,6 +108,7 @@ export function ReservationForm({ locale }: { locale: string }) {
   const update = (field: string, value: string | number) => {
     if (field === "date") {
       const newDate = value as string;
+      if (newDate < getMinDate()) return;
       setForm((prev) => {
         const newSlots = getTimeSlots(newDate);
         const timeStillValid = newSlots.includes(prev.time);
