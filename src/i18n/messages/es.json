@@ -50,7 +50,8 @@
     "hamburguesa": "Hamburguesas",
     "combo": "Combos",
     "extra": "Extras",
-    "papas-topping": "Papas con Topping"
+    "papas-topping": "Papas con Topping",
+    "vegetariano": "Vegetariano"
   },
   "cart": {
     "title": "Tu Pedido",
@@ -72,7 +73,11 @@
     "orderTable": "Para la mesa",
     "orderDelivery": "Domicilio",
     "continue": "Continuar",
-    "back": "Volver"
+    "back": "Volver",
+    "nameRequired": "Ingresa tu nombre",
+    "paymentRequired": "Selecciona un método de pago",
+    "orderTypeRequired": "Selecciona el tipo de pedido",
+    "requiredFields": "Completa los campos requeridos"
   },
   "contact": {
     "title": "Contacto",
@@ -93,7 +98,12 @@
     "namePlaceholder": "Tu nombre completo",
     "emailPlaceholder": "correo@ejemplo.com",
     "phonePlaceholder": "+57 300 000 0000",
-    "messagePlaceholder": "Cuéntanos en qué estás interesado..."
+    "messagePlaceholder": "Cuéntanos en qué estás interesado...",
+    "nameRequired": "Ingresa tu nombre",
+    "emailRequired": "Ingresa tu correo electrónico",
+    "interestRequired": "Selecciona un motivo",
+    "messageRequired": "Escribe tu mensaje",
+    "requiredFields": "Completa los campos requeridos"
   },
   "reservations": {
     "title": "Reservas",
@@ -107,10 +117,19 @@
     "send": "Reservar por WhatsApp",
     "namePlaceholder": "Tu nombre completo",
     "scheduleNote": "Lun-Vie: 3:00 PM - 10:00 PM | Sáb-Dom y Festivos: 3:00 PM - 11:00 PM",
-    "selectDate": "Selecciona una fecha",
+    "selectDate": "Selecciona una fecha primero",
+    "selectDateBtn": "Seleccionar fecha",
     "selectTime": "Selecciona una hora",
     "person": "persona",
-    "persons": "personas"
+    "persons": "personas",
+    "morning": "Mañana",
+    "afternoon": "Tarde",
+    "evening": "Noche",
+    "closedDay": "No hay servicio este día. Por favor, selecciona otra fecha.",
+    "nameRequired": "Ingresa tu nombre",
+    "dateRequired": "Selecciona una fecha",
+    "timeRequired": "Selecciona una hora",
+    "requiredFields": "Completa los campos requeridos"
   },
   "videos": {
     "title": "Videos",

@@ -50,7 +50,8 @@
     "hamburguesa": "Burgers",
     "combo": "Combos",
     "extra": "Extras",
-    "papas-topping": "Loaded Fries"
+    "papas-topping": "Loaded Fries",
+    "vegetariano": "Vegetarian"
   },
   "cart": {
     "title": "Your Order",
@@ -72,7 +73,11 @@
     "orderTable": "Dine in",
     "orderDelivery": "Delivery",
     "continue": "Continue",
-    "back": "Back"
+    "back": "Back",
+    "nameRequired": "Enter your name",
+    "paymentRequired": "Select a payment method",
+    "orderTypeRequired": "Select an order type",
+    "requiredFields": "Please complete all required fields"
   },
   "contact": {
     "title": "Contact",
@@ -93,7 +98,12 @@
     "namePlaceholder": "Your full name",
     "emailPlaceholder": "email@example.com",
     "phonePlaceholder": "+57 300 000 0000",
-    "messagePlaceholder": "Tell us what you're interested in..."
+    "messagePlaceholder": "Tell us what you're interested in...",
+    "nameRequired": "Enter your name",
+    "emailRequired": "Enter your email",
+    "interestRequired": "Select a reason",
+    "messageRequired": "Write your message",
+    "requiredFields": "Please complete all required fields"
   },
   "reservations": {
     "title": "Reservations",
@@ -107,10 +117,19 @@
     "send": "Book via WhatsApp",
     "namePlaceholder": "Your full name",
     "scheduleNote": "Mon-Fri: 3:00 PM - 10:00 PM | Sat-Sun & Holidays: 3:00 PM - 11:00 PM",
-    "selectDate": "Select a date",
+    "selectDate": "Select a date first",
+    "selectDateBtn": "Select a date",
     "selectTime": "Select a time",
     "person": "guest",
-    "persons": "guests"
+    "persons": "guests",
+    "morning": "Morning",
+    "afternoon": "Afternoon",
+    "evening": "Evening",
+    "closedDay": "No service on this day. Please select another date.",
+    "nameRequired": "Enter your name",
+    "dateRequired": "Select a date",
+    "timeRequired": "Select a time",
+    "requiredFields": "Please complete all required fields"
   },
   "videos": {
     "title": "Videos",

@@ -29,6 +29,14 @@ body {
   font-family: var(--font-body), sans-serif;
 }
 
+/* Prevent auto-zoom on iOS and ensure inputs never overflow their container */
+input, select, textarea {
+  font-size: 16px !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
 }
@@ -66,10 +74,17 @@ h1, h2, h3, h4, h5, h6 {
     );
 }
 
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
+/* Hide scrollbar utility */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* scroll-behavior: smooth removed — causes Chrome mobile navbar issues.
+   Programmatic scrolls use behavior:'smooth' in JS instead. */
 
 /* Block scroll when mobile menu is open */
 body.no-scroll {

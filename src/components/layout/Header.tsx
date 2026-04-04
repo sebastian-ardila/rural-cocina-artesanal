@@ -37,9 +37,10 @@ export function Header({ locale }: { locale: string }) {
         setTimeout(tryObserve, 500);
         return;
       }
+      const scrollRoot = document.getElementById('scroll-root') || null;
       observer = new IntersectionObserver(
         ([entry]) => setCartaSectionVisible(entry.isIntersecting),
-        { threshold: 0, rootMargin: "-80px 0px 0px 0px" }
+        { threshold: 0, rootMargin: "-80px 0px 0px 0px", root: scrollRoot }
       );
       observer.observe(section);
     }
@@ -73,7 +74,7 @@ export function Header({ locale }: { locale: string }) {
 
   return (
     <>
-      <header className="sticky top-0 z-40 bg-rural-black/80 backdrop-blur-xl">
+      <header className="z-40 bg-rural-black shrink-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 sm:h-20">
             {/* Logo */}

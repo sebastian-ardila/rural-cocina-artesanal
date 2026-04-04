@@ -1,4 +1,4 @@
-import { MenuItem, MenuCategory } from "@/types/menu";
+import { MenuItem, MenuCategory, DisplayCategory } from "@/types/menu";
 
 export const categories: {
   id: MenuCategory;
@@ -12,6 +12,14 @@ export const categories: {
     id: "papas-topping",
     label: { es: "Papas con Topping", en: "Loaded Fries" },
   },
+];
+
+export const displayCategories: {
+  id: DisplayCategory;
+  label: { es: string; en: string };
+}[] = [
+  ...categories,
+  { id: "vegetariano", label: { es: "Vegetariano", en: "Vegetarian" } },
 ];
 
 export const menuItems: MenuItem[] = [

@@ -45,16 +45,18 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${spaceGrotesk.variable} ${sora.variable} ${karantina.variable} h-full`}
+      className={`${spaceGrotesk.variable} ${sora.variable} ${karantina.variable}`}
     >
       <head>
         <meta name="theme-color" content="#1a1a1a" />
       </head>
-      <body className="min-h-full flex flex-col bg-rural-black text-rural-white font-body antialiased">
+      <body className="h-[100dvh] overflow-hidden flex flex-col bg-rural-black text-rural-white font-body antialiased">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header locale={locale} />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <div id="scroll-root" className="flex-1 overflow-y-auto">
+            <main>{children}</main>
+            <Footer />
+          </div>
           <CartDrawer locale={locale} />
         </NextIntlClientProvider>
       </body>

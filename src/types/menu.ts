@@ -5,6 +5,8 @@ export type MenuCategory =
   | "extra"
   | "papas-topping";
 
+export type DisplayCategory = MenuCategory | "vegetariano";
+
 export type MeatOption = "res" | "pollo" | "trucha" | "cerdo" | "desmechada";
 
 export interface MenuItem {
